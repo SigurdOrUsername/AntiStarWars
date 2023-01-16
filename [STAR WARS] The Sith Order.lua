@@ -5,7 +5,7 @@ local function GetEnemies()
     local Enemies = {}
 
     for Index, Enemy in next, Players:GetPlayers() do
-        if Enemy ~= Player and Enemy.Character and not Enemy.Character:FindFirstChild("ForceField") and Enemy.Character:FindFirstChild("Humanoid") then
+        if Enemy ~= Player and Enemy.Character and not Enemy.Character:FindFirstChildWhichIsA("ForceField") and Enemy.Character:FindFirstChild("Humanoid") then
             table.insert(Enemies, Enemy)
         end
     end
@@ -18,7 +18,7 @@ while task.wait() do
     
     if Tool then
         local Enemies = GetEnemies()
-        warn(#Enemies)
+
         if #Enemies > 0 then
             for Index, Enemy in next, Enemies do
                 while Enemy.Character and Enemy.Character:FindFirstChild("Humanoid") and Enemy.Character.Humanoid.Health > 0 do
